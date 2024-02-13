@@ -135,9 +135,14 @@ function checkAnswer(selectedIndex) {
     if (inputAnswer === correctAnswer) {
         // User score update
         score++;
+        //Query question array for end of quiz
+        if (questionIndex === quizQuestions.length -1){
+            endQuiz()
+        } else {
         // Next question
         questionIndex++;
         displayQuestion();
+        }
     } else {
         // Display incorrect answer message
         wrongAnswer = `<h3>Incorrect Answer. The correct answer is ${correctAnswer}</h3>`;
@@ -158,11 +163,10 @@ function checkAnswer(selectedIndex) {
 }
 
 
-
 function endQuiz() {
     clearInterval(timer);
         questionContainer.innerHTML = `<h2>Quiz Over!</h2>
-        <p>Your final score is: ${score} out of 6</p>`;
+        <p>Your final score is: ${score} out of 6</p>`
     // Display final score and input for initials
     // Handle saving initials and score
   }
