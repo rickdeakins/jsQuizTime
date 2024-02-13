@@ -33,5 +33,5 @@ My future plans for this application are to expand the base of questions and uti
 I had initially skipped this challenge because at the time it was very much over my head and what I had assembled was not nearly substantive enough. At the end of the bootcamp I found myself ready to revisit this project. I reviewed the expectations for the project and mapped out ahead of time steps I could take to create this project in a short time (hence the excessive comments in the js file), with my bootcamp ending on 2/13/24. Unfortunately due to time constraints I was not able to implement the screen rendering of the user score. This will certainly be a personal future development that I will plan on implementing post-bootcamp.
 
 ## Links
-[Deployed Application]()
+[Deployed Application](https://rickdeakins.github.io/jsQuizTime/)
 [Github Repo](https://github.com/rickdeakins/jsQuizTime)
