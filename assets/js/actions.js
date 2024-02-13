@@ -82,21 +82,22 @@ const quizQuestions = [
     }
  
     
-    function displayQuestion() {
-        const currentQuestion = quizQuestions[questionIndex];
-        questionContainer.innerHTML = `
-            <h2>${currentQuestion.question}</h2>
-            <ul>
-            ${currentQuestion.options.map(option => `<li><button class="option-btn">${option}</button></li>`).join('')}
-            </ul>`;
-    
-        // Add event listeners to the option buttons
-        const optionButtons = document.querySelectorAll('.option-btn');
+function displayQuestion() {
+    const currentQuestion = quizQuestions[questionIndex];
+    questionContainer.innerHTML = `
+        <h2>${currentQuestion.question}</h2>
+        <ul>
+        ${currentQuestion.options.map(option => `<li><button class="option-btn">${option}</button></li>`).join('')}
+        </ul>`;
+
+    // Add event listeners to the option buttons
+    const optionButtons = document.querySelectorAll('.option-btn');
         optionButtons.forEach((button, index) => {
             button.addEventListener('click', () => {
+                checkAnswer(index);
             });
         });
-    }
+}
     
 
 
@@ -142,6 +143,14 @@ function checkAnswer(selectedIndex) {
         wrongAnswer = `<h3>Incorrect Answer. The correct answer is ${correctAnswer}</h3>`;
         questionContainer.insertAdjacentHTML('beforeend', wrongAnswer);
         
+        const nextQuestionButton = document.createElement('button');
+        nextQuestionButton.textContent = 'Next Question';
+        nextQuestionButton.addEventListener('click', () => {
+            questionIndex++;
+            displayQuestion();
+    });
+        questionContainer.appendChild(nextQuestionButton);
+
         // Handle incorrect answer (e.g., subtract time, display message)
         // Example: subtracting time
         // timeRemaining -= 10; // Subtract 10 seconds
@@ -152,6 +161,8 @@ function checkAnswer(selectedIndex) {
 
 function endQuiz() {
     clearInterval(timer);
+        questionContainer.innerHTML = `<h2>Quiz Over!</h2>
+        <p>Your final score is: ${score} out of 6</p>`;
     // Display final score and input for initials
     // Handle saving initials and score
   }
