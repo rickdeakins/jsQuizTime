@@ -72,8 +72,34 @@ const quizQuestions = [
   function startQuiz() {
       startTimer();
       displayQuestion();
+//    //Event listeners implemented with the option buttons
+// const optionButtons = document.querySelectorAll('.option-btn');
+// optionButtons.forEach((button, index) => {
+//     button.addEventListener('click', () => {
+//         checkAnswer(index);
+//     });
+// });
     }
-  
+ 
+    
+    function displayQuestion() {
+        const currentQuestion = quizQuestions[questionIndex];
+        questionContainer.innerHTML = `
+            <h2>${currentQuestion.question}</h2>
+            <ul>
+            ${currentQuestion.options.map(option => `<li><button class="option-btn">${option}</button></li>`).join('')}
+            </ul>`;
+    
+        // Add event listeners to the option buttons
+        const optionButtons = document.querySelectorAll('.option-btn');
+        optionButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+            });
+        });
+    }
+    
+
+
 //Function that starts the timer
 function startTimer() {
     let timeRemaining = timeLimit;
@@ -89,19 +115,43 @@ function startTimer() {
     }, 1000);
   }
 
-//Function to render the questions on the screen
-function displayQuestion() {
-const currentQuestion = quizQuestions[questionIndex];
-questionContainer.innerHTML = `
-    <h2>${currentQuestion.question}</h2>
-    <ul>
-    ${currentQuestion.options.map(options => `<li>${options}</li>`).join('')}
-    </ul>`;
+// //Function to render the questions on the screen
+// function displayQuestion() {
+// const currentQuestion = quizQuestions[questionIndex];
+// questionContainer.innerHTML = `
+//     <h2>${currentQuestion.question}</h2>
+//     <ul>
+//     ${currentQuestion.options.map(option => `<li><button class="option-btn">${option}</button></li>`).join('')}
+//     </ul>`;
+// }
+
+
+
+function checkAnswer(selectedIndex) {
+    const inputAnswer = quizQuestions[questionIndex].options[selectedIndex];
+    const correctAnswer = quizQuestions[questionIndex].correctAnswer;
+
+    if (inputAnswer === correctAnswer) {
+        // User score update
+        score++;
+        // Next question
+        questionIndex++;
+        displayQuestion();
+    } else {
+        // Display incorrect answer message
+        wrongAnswer = `<h3>Incorrect Answer. The correct answer is ${correctAnswer}</h3>`;
+        questionContainer.insertAdjacentHTML('beforeend', wrongAnswer);
+        
+        // Handle incorrect answer (e.g., subtract time, display message)
+        // Example: subtracting time
+        // timeRemaining -= 10; // Subtract 10 seconds
+    }
 }
+
+
 
 function endQuiz() {
     clearInterval(timer);
     // Display final score and input for initials
     // Handle saving initials and score
   }
-  
