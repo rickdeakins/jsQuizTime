@@ -1,0 +1,40 @@
+body {
+    font-family: 'Montserrat', sans-serif; 
+    background-color: #d9d8d8; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    margin: 0;
+}
+
+#quiz-container {
+    background-color: #ecebeb; 
+    padding: 20px; 
+    border: 4px solid #5e5d5d; 
+    border-radius: 10px; 
+    text-align: center; 
+    max-width: 400px; 
+}
+
+#start-btn {
+    background-color: #007bff; 
+    color: #fff;
+    border: none; 
+    padding: 10px 20px; 
+    margin-top: 20px;
+    cursor: pointer; 
+}
+
+#question-container {
+    margin-top: 20px; 
+}
+
+#timer {
+    margin-top: 20px;
+}
+
+h1 {
+    color: #272626; 
+    margin-bottom: 20px; 
+}
